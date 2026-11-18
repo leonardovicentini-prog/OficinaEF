@@ -1,0 +1,14 @@
+## Visual Studio / .NET
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+launchSettings.json.bak
+TestResults/
+*.log
+
+## Segredos locais
+appsettings.Local.json
+secrets.json

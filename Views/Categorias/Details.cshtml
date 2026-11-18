@@ -1,0 +1,49 @@
+﻿@model Categoria
+
+@{
+    ViewData["Title"] = "Detalhes da categoria";
+}
+
+<h1>
+    Detalhes da categoria
+</h1>
+
+<dl class="row">
+    <dt class="col-sm-2">Nome</dt>
+    <dd class="col-sm-10">@Model.Nome</dd>
+
+    <dt class="col-sm-2">Descrição</dt>
+    <dd class="col-sm-10">@Model.Descricao</dd>
+
+    <dt class="col-sm-2">Produtos</dt>
+    <dd class="col-sm-10">
+        @if (Model.Produtos.Count == 0)
+        {
+            <span class="text-muted">Nenhum produto nesta categoria.</span>
+        }
+        else
+        {
+            <ul class="mb-0">
+                @foreach (Produto produto in Model.Produtos.OrderBy(p => p.Nome))
+                {
+                    <li>
+                        <a asp-controller="Produtos"
+                           asp-action="Details"
+                           asp-route-id="@produto.Id">@produto.Nome</a>
+                    </li>
+                }
+            </ul>
+        }
+    </dd>
+</dl>
+
+<a asp-action="Edit"
+   asp-route-id="@Model.Id"
+   class="btn btn-warning">
+    Editar
+</a>
+
+<a asp-action="Index"
+   class="btn btn-secondary">
+    Voltar
+</a>
